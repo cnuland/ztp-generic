@@ -1,4 +1,0 @@
-resources:
-- 00_placementrule.yaml
-- 01_subscription.yaml
-- 02_application.yaml
