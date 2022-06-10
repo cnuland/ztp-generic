@@ -1,0 +1,28 @@
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: sno-ztp-c01
+  namespace: c01
+  labels:
+    infraenvs.agent-install.openshift.io: "c01"
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: "c01"
+spec:
+  online: true
+  bootMACAddress: ""
+  automatedCleaningMode: metadata
+  rootDeviceHints:
+    hctl: "2:0:0:0"
+    deviceName: /dev/sdb
+  bmc:
+  #  HP iLO 4/5
+  ## address: ilo5-virtualmedia+https://192.168.190.225/redfish/v1/Systems/1
+  ## address: ilo4-virtualmedia+https://192.168.190.225/redfish/v1/Systems/1
+  #  Dell DRAC 8/9
+  ## address: idrac-virtualmedia+https://192.168.190.225/redfish/v1/Systems/System.Embedded.1
+  #  Lenovo
+    address: redfish-virtualmedia+https://<IP>/redfish/v1/Systems/1
+    credentialsName: xclarity-secret
+    disableCertificateVerification: true

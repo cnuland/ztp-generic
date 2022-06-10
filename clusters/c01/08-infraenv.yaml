@@ -1,0 +1,22 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: c01
+  namespace: c01
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
+spec:
+  clusterRef:
+    name: c01
+    namespace: c01
+  sshAuthorizedKey: ''
+  agentLabelSelector:
+    matchLabels:
+      cluster-name: c01
+  pullSecretRef:
+    name: pull-secret
+  nmStateConfigLabelSelector:
+    matchLabels:
+      cluster-name: c01
+# User for modify ignition during discovery
+#  ignitionConfigOverride: ''
